@@ -1,0 +1,41 @@
+{
+  "name": "@smart-school/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "tsc && electron .",
+    "build": "tsc",
+    "dist": "tsc && electron-builder --win --dir",
+    "package:exe": "tsc && electron-builder --win nsis",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.2"
+  },
+  "build": {
+    "appId": "com.smartschool.erp",
+    "productName": "Smart School ERP",
+    "copyright": "Copyright © 2026 Smart School Platform",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "../web/dist/**/*"
+    ],
+    "win": {
+      "target": ["nsis", "portable"],
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

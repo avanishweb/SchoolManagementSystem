@@ -1,0 +1,34 @@
+import { Router } from 'express';
+import { healthRouter } from './health.router.js';
+import { authRouter } from '../modules/auth/auth.routes.js';
+import { schoolRouter } from '../modules/schools/school.routes.js';
+import { studentRouter } from '../modules/students/student.routes.js';
+import { academicRouter } from '../modules/academic/academic.routes.js';
+import { employeeRouter } from '../modules/employees/employee.routes.js';
+import { attendanceRouter } from '../modules/attendance/attendance.routes.js';
+import { feeRouter } from '../modules/fees/fee.routes.js';
+import { examinationRouter } from '../modules/examinations/examination.routes.js';
+import { timetableRouter } from '../modules/timetable/timetable.routes.js';
+import { homeworkRouter } from '../modules/homework/homework.routes.js';
+import { admissionRouter } from '../modules/admissions/admission.routes.js';
+import { cmsRouter } from '../modules/cms/cms.routes.js';
+import { accountingRouter } from '../modules/accounting/accounting.routes.js';
+import { notificationRouter } from '../modules/notifications/notification.routes.js';
+
+export const apiRouter = Router();
+
+apiRouter.use('/health', healthRouter);
+apiRouter.use('/auth', authRouter);
+apiRouter.use('/schools', schoolRouter);
+apiRouter.use('/students', studentRouter);
+apiRouter.use('/academic', academicRouter);
+apiRouter.use('/employees', employeeRouter);
+apiRouter.use('/attendance', attendanceRouter);
+apiRouter.use('/fees', feeRouter);
+apiRouter.use('/examinations', examinationRouter);
+apiRouter.use('/timetable', timetableRouter);
+apiRouter.use('/homework', homeworkRouter);
+apiRouter.use('/admissions', admissionRouter);
+apiRouter.use('/cms', cmsRouter);
+apiRouter.use('/accounting', accountingRouter);
+apiRouter.use('/notifications', notificationRouter);

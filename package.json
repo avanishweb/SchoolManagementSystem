@@ -1,0 +1,33 @@
+{
+  "name": "smart-school-erp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multi-Tenant Smart School Management System (ERP)",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n \"API,WEB\" -c \"blue,magenta\" \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm --workspace=@smart-school/api run dev",
+    "dev:web": "npm --workspace=@smart-school/web run dev",
+    "dev:desktop": "npm --workspace=@smart-school/desktop run dev",
+    "build": "npm run build:packages && npm run build:apps",
+    "build:packages": "npm --workspace=@smart-school/shared-types run build && npm --workspace=@smart-school/shared-utils run build && npm --workspace=@smart-school/validation run build",
+    "build:apps": "npm --workspace=@smart-school/api run build && npm --workspace=@smart-school/web run build && npm --workspace=@smart-school/desktop run build",
+    "build:web": "npm --workspace=@smart-school/web run build",
+    "build:api": "npm --workspace=@smart-school/api run build",
+    "build:desktop": "npm --workspace=@smart-school/desktop run build",
+    "package:desktop": "npm --workspace=@smart-school/desktop run dist",
+    "test": "cross-env TEMP=D:/temp TMP=D:/temp npm --workspace=@smart-school/api run test && cross-env TEMP=D:/temp TMP=D:/temp npm --workspace=@smart-school/web run test",
+    "test:api": "cross-env TEMP=D:/temp TMP=D:/temp npm --workspace=@smart-school/api run test",
+    "test:web": "cross-env TEMP=D:/temp TMP=D:/temp npm --workspace=@smart-school/web run test",
+    "typecheck": "npm --workspace=@smart-school/shared-types run typecheck && npm --workspace=@smart-school/shared-utils run typecheck && npm --workspace=@smart-school/validation run typecheck && npm --workspace=@smart-school/api run typecheck && npm --workspace=@smart-school/web run typecheck && npm --workspace=@smart-school/desktop run typecheck",
+    "seed": "npm --workspace=@smart-school/api run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "typescript": "^5.7.2"
+  }
+}
